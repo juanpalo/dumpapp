@@ -13,6 +13,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { SignaturepadComponent } from './signaturepad/signaturepad.component';
+
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAy4Vx5HGQ82x8hCiBuPhAtxQphCq8KJDU",
@@ -29,7 +32,8 @@ const firebaseConfig = {
     AppComponent,
     PdfComponent,
     TopBarComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SignaturepadComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +41,11 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    SignaturePadModule,
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent },
-      {path: 'pdf', component: PdfComponent}
+      {path: 'pdf', component: PdfComponent},
+      {path:'signature',component:SignaturepadComponent},
     ])
   ],
   providers: [],
