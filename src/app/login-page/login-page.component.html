@@ -1,0 +1,14 @@
+
+<div *ngIf="afAuth.user | async as user; else showLogin2">
+    <ul>
+        <li *ngFor="let item of items | async">
+           {{ item | json }}
+        </li>
+      </ul>
+    </div>
+    
+     <ng-template #showLogin2>
+          <!-- <a [routerLink]="['/login']" class="button fancy-button"><i class="material-icons">account_circle</i>Sign In</a> -->
+          <button (click)="login()">Login</button>
+        </ng-template>
+    

@@ -10,9 +10,9 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
+
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAy4Vx5HGQ82x8hCiBuPhAtxQphCq8KJDU",
@@ -28,7 +28,8 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     PdfComponent,
-    TopBarComponent
+    TopBarComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,7 @@ const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
+      { path: '', component: LoginPageComponent },
       {path: 'pdf', component: PdfComponent}
     ])
   ],
