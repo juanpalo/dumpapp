@@ -10,8 +10,10 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class AppComponent {
   title = 'dumpapp';
   constructor(public au: AngularFireAuth,public db: AngularFireDatabase) {
-    
+  
   }
+
+
 
   logout() {
     this.au.auth.signOut();

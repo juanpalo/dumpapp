@@ -2,9 +2,8 @@
     <h1>DayDaCo</h1>
   </a>
   
-  <div *ngIf="afAuth.user | async as user">
+  <div *ngIf="afAuth.user|async as user" >
         
         <button (click)="logout()">Logout</button>
       </div>
-  
-  
+ 

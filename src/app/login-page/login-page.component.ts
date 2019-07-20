@@ -11,6 +11,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginPageComponent implements OnInit {
   items: Observable<any[]>;
+
+
   constructor(public db: AngularFireDatabase,public afAuth:AngularFireAuth) {
     this.items = db.list('items').valueChanges();
    }
@@ -23,6 +25,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   private updateUserData(): void{
+    
     let path=`users/${this.afAuth.auth.currentUser.uid}`;
     let data={
       email:this.afAuth.auth.currentUser.email,
