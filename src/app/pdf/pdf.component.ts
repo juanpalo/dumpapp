@@ -1,5 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import * as jsPDF from 'jspdf'
+import { Router  } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-pdf',
@@ -11,7 +13,7 @@ import * as jsPDF from 'jspdf'
 })
 export class PdfComponent implements OnInit {
 
-  constructor(
+  constructor(private route: Router,public afAuth:AngularFireAuth,
     @Inject('Window') private window: Window,
   ) { }
 
@@ -28,6 +30,9 @@ export class PdfComponent implements OnInit {
 }
 
   ngOnInit() {
+    if (!this.afAuth.auth.currentUser) {
+      this.route.navigate(['']);
+   }
   }
 
 }

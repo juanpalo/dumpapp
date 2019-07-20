@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dumpapp';
+  constructor(public au: AngularFireAuth,public db: AngularFireDatabase) {
+  }
+
+  logout() {
+    this.au.auth.signOut();
+  }
+
 }
