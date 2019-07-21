@@ -10,35 +10,35 @@
           <label for="CompanyName">
             Company Name: 
           </label>
-          <input id="CompanyName"  type="text" formControlName="CompanyName">
+          <input id="CompanyName"  [(ngModel)]="info.CompanyName" type="text" formControlName="CompanyName"  required>
         </div>
        
         <div class="Center">
           <label for="DispatcherName">
             Dispatcher Name:
           </label>
-          <input id="DispatcherName" type="text" formControlName="DispatcherName">
+          <input id="DispatcherName" [(ngModel)]="info.DispatcherName" type="text" formControlName="DispatcherName" required>
         </div>
        
         <div class="Center">
                 <label for="CompanyPhone">
                     Company Phone:
                 </label>
-                <input id="CompanyPhone" type="number" formControlName="CompanyPhone">
+                <input id="CompanyPhone" [(ngModel)]="info.CompanyPhone" type="number" formControlName="CompanyPhone" required>
               </div>
 
               <div class="Center">
                     <label for="CompanyEmail">
                         Company Email:
                     </label>
-                    <input id="CompanyEmail" type="email" formControlName="CompanyEmail">
+                    <input id="CompanyEmail" [(ngModel)]="info.CompanyEmail" type="email" formControlName="CompanyEmail" required>
                   </div>
 
                   <div class="Center">
                         <label for="CompanyAddress">
                             Company Address:
                         </label>
-                        <textarea id="CompanyAddress" type="text" formControlName="CompanyAddress">
+                        <textarea id="CompanyAddress" [(ngModel)]="info.CompanyAddress" type="text" formControlName="CompanyAddress" required>
                         </textarea>
                       </div>
         </div>
@@ -49,35 +49,35 @@
         <label for="DriverName">
             Driver Name:
         </label>
-        <input id="DriverName" type="text" formControlName="DriverName">
+        <input id="DriverName" [(ngModel)]="info.DriverName" type="text" formControlName="DriverName" required>
       </div>
 
       <div class="Center">
             <label for="Employer">
                 Employer:
             </label>
-            <input id="Employer" type="text" formControlName="Employer">
+            <input id="Employer" [(ngModel)]="info.Employer" type="text" formControlName="Employer" required>
           </div>
 
           <div class="Center">
                 <label for="Phone">
                     Phone:
                 </label>
-                <input id="Phone" type="number" formControlName="Phone">
+                <input id="Phone" [(ngModel)]="info.Phone" type="number" formControlName="Phone" required>
               </div>
 
               <div class="Center">
                     <label for="Email">
                         Email:
                     </label>
-                    <input id="Email" type="email" formControlName="Email">
+                    <input id="Email" [(ngModel)]="info.Email" type="email" formControlName="Email" required>
                   </div>
 
                     <div class="Center">
                         <label for="Address">
                             Address:
                         </label>
-                        <textarea   id="Address" type="text" formControlName="Address">
+                        <textarea   id="Address" [(ngModel)]="info.Address" type="text" formControlName="Address" required>
                         </textarea>
                       </div>
                       

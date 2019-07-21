@@ -16,13 +16,16 @@ export class SignupPageComponent implements OnInit {
 public role;
 public truckerDiv=false;
 
-public alreadySignUp=false;
+//public alreadySignUp=false;
 
 itemRef: AngularFireObject<any>;
 item: Observable<any>;
 
 public title;
 public checkoutForm;
+
+public info;
+
   constructor( private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     public db: AngularFireDatabase,
@@ -128,19 +131,29 @@ if(this.role=="trucker"){
   this.truckerDiv=false;
 }
 
-this.itemRef = this.db.object(`${this.role}/${this.afAuth.auth.currentUser.uid}`);
+this.afAuth.auth.onAuthStateChanged(user=>{
+  if(user){
+
+    this.itemRef = this.db.object(`${this.role}/${this.afAuth.auth.currentUser.uid}`);
 this.itemRef.snapshotChanges().subscribe(action => {
   console.log(action.type);
   console.log(action.key)
   console.log(action.payload.val())
   if(action.payload.val()==null){
-    this.alreadySignUp=false;
+    //this.alreadySignUp=false;
   }else{
-    this.alreadySignUp=true;
+    //this.alreadySignUp=true;
+    this.info=action.payload.val();
     //go to profile page
     //this.router.navigate(['profile']);
   }
 });
+
+  }
+});
+
+
+
 
   }
 
