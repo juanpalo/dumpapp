@@ -10,6 +10,8 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SignupPageComponent implements OnInit {
 public role;
+public truckerDiv=false;
+
 public title;
 public checkoutForm;
   constructor( private route: ActivatedRoute,
@@ -17,8 +19,18 @@ public checkoutForm;
     ) {
 
       this.checkoutForm = this.formBuilder.group({
-        name: '',
-        address: ''
+        CompanyName: '',
+        DispatcherName: '',
+        CompanyPhone: '',
+        CompanyEmail:'',
+        CompanyAddress:'',
+
+        DriverName:'',
+        Employer:'',
+        Phone:'',
+        Email:'',
+        Address:''
+
       });
 
      }
@@ -54,6 +66,13 @@ public checkoutForm;
      } 
       
     });
+
+if(this.role=="trucker"){
+  this.truckerDiv=true;
+}else{
+  this.truckerDiv=false;
+}
+
   }
 
 
