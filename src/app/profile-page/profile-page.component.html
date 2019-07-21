@@ -1,6 +1,24 @@
-<div >
-<p>{{info.CompanyAddress}}</p>
-</div>
+
+
+<div *ngIf="info.CompanyAddress">
+    <p>{{info.CompanyAddress}}</p>
+    </div>
+    
+    <div *ngIf="info.CompanyAddress">
+        <p>{{info.CompanyAddress}}</p>
+        </div>
+        
+            <div *ngIf="info.CompanyAddress">
+            <p>{{info.CompanyAddress}}</p>
+            </div>
+            
+                <div *ngIf="info.CompanyAddress">
+                <p>{{info.CompanyAddress}}</p>
+                </div>
+                
+                <div *ngIf="info.CompanyAddress">
+                <p>{{info.CompanyAddress}}</p>
+                </div>
 
 <a [routerLink]="['/signup',role]" >
     <button type="button" class="btn btn-primary btn-lg">Update</button>
