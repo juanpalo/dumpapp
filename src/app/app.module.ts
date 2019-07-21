@@ -19,6 +19,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAy4Vx5HGQ82x8hCiBuPhAtxQphCq8KJDU",
@@ -37,7 +38,8 @@ const firebaseConfig = {
     TopBarComponent,
     LoginPageComponent,
     SignaturepadComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +52,11 @@ const firebaseConfig = {
     SignaturePadModule,
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent },
+      {path:'login',component:LoginPageComponent},
       {path: 'pdf', component: PdfComponent},
       {path:'signature',component:SignaturepadComponent},
       {path:'signup/:role',component:SignupPageComponent},
+      {path:'profile',component:ProfilePageComponent},
     ])
   ],
   providers: [],

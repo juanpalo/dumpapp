@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase,AngularFireObject } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
+import {  Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-login-page',
@@ -11,9 +14,17 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginPageComponent implements OnInit {
   items: Observable<any[]>;
+//object to check data exit
+  itemRef: AngularFireObject<any>;
+
+  public broker="broker";
+  public owner="owner";
+  public trucker="trucker";
 
 
-  constructor(public db: AngularFireDatabase,public afAuth:AngularFireAuth) {
+  constructor(public db: AngularFireDatabase,
+    private router: Router,
+    public afAuth:AngularFireAuth) {
     this.items = db.list('items').valueChanges();
    }
 
@@ -35,6 +46,39 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
+
+this.afAuth.auth.onAuthStateChanged(user=>{
+  if(user){
+    this.itemRef = this.db.object(`trucker/${this.afAuth.auth.currentUser.uid}`);
+    this.itemRef.snapshotChanges().subscribe(action => {
+      if(action.payload.val()==null){
+      }else{
+        //go to profile page
+        this.router.navigate(['profile']);
+      }
+    });
+
+    this.itemRef = this.db.object(`broker/${this.afAuth.auth.currentUser.uid}`);
+    this.itemRef.snapshotChanges().subscribe(action => {
+      if(action.payload.val()==null){
+      }else{
+        //go to profile page
+        this.router.navigate(['profile']);
+      }
+    });
+
+    this.itemRef = this.db.object(`owner/${this.afAuth.auth.currentUser.uid}`);
+    this.itemRef.snapshotChanges().subscribe(action => {
+      if(action.payload.val()==null){
+      }else{
+        //go to profile page
+        this.router.navigate(['profile']);
+      }
+    });
+
+  }
+})
+
   }
 
 }

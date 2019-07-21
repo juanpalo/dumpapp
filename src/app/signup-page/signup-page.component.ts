@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute  } from '@angular/router';
+import { ActivatedRoute ,Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
 import { AngularFireDatabase,AngularFireObject  } from '@angular/fire/database';
@@ -26,7 +26,8 @@ public checkoutForm;
   constructor( private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     public db: AngularFireDatabase,
-    public afAuth:AngularFireAuth
+    public afAuth:AngularFireAuth,
+    private router: Router
     ) {
 
       this.checkoutForm = this.formBuilder.group({
@@ -51,10 +52,14 @@ public checkoutForm;
       
       console.warn('Your order has been submitted', customerData.CompanyName);
 
+
+
+
 if(this.afAuth.user){
   let path=`${this.role}/${this.afAuth.auth.currentUser.uid}`;
 
-  if(this.role=="trucker"){
+  if(this.role=="trucker"&&customerData.DriverName!=""&&customerData.Employer!=""&&
+    customerData.Phone!=""&&customerData.Email!=""&&customerData.Address!=""){
     let data={
       DriverName: customerData.DriverName,
       Employer:customerData.Employer,
@@ -62,8 +67,13 @@ if(this.afAuth.user){
       Email:customerData.Email,
       Address:customerData.Address,
     }
-    this.db.object(path).update(data).catch(error=>console.log(error));
-  }else if(this.role=="broker"){
+    this.db.object(path).update(data).catch(error=>console.log(error)).then(any=>this.router.navigate(['profile']));
+  }else if(this.role=="broker"&&
+  customerData.CompanyName!=""
+  &&customerData.DispatcherName!=""&&
+  customerData.CompanyPhone!=""&&
+  customerData.CompanyEmail!=""&&
+  customerData.CompanyAddress!=""){
     let data={
       CompanyName: customerData.CompanyName,
       DispatcherName: customerData.DispatcherName,
@@ -71,8 +81,13 @@ if(this.afAuth.user){
       CompanyEmail:customerData.CompanyEmail,
       CompanyAddress:customerData.CompanyAddress,
     }
-    this.db.object(path).update(data).catch(error=>console.log(error));
-  }else if(this.role=="owner"){
+    this.db.object(path).update(data).catch(error=>console.log(error)).then(any=>this.router.navigate(['profile']));
+  }else if(this.role=="owner"&&
+  customerData.CompanyName!=""
+  &&customerData.DispatcherName!=""&&
+  customerData.CompanyPhone!=""&&
+  customerData.CompanyEmail!=""&&
+  customerData.CompanyAddress!=""){
     let data={
       CompanyName: customerData.CompanyName,
       DispatcherName: customerData.DispatcherName,
@@ -80,7 +95,7 @@ if(this.afAuth.user){
       CompanyEmail:customerData.CompanyEmail,
       CompanyAddress:customerData.CompanyAddress,
     }
-    this.db.object(path).update(data).catch(error=>console.log(error));
+    this.db.object(path).update(data).catch(error=>console.log(error)).then(any=>this.router.navigate(['profile']));
   }
 }
       this.checkoutForm.reset();
@@ -126,12 +141,16 @@ this.itemRef.snapshotChanges().subscribe(action => {
     this.alreadySignUp=false;
   }else{
     this.alreadySignUp=true;
+    //go to profile page
+    this.router.navigate(['profile']);
   }
 });
 
 
-//
-console.log(this.item);
+if(this.alreadySignUp){
+  //go to profile page
+  this.router.navigate(['profile']);
+}
 
 
 
