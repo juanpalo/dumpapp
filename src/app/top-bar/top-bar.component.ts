@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { Router } from "@angular/router";
 
-
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',

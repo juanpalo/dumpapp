@@ -10,6 +10,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SignupPageComponent implements OnInit {
 public role;
+public title;
 public checkoutForm;
   constructor( private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -32,6 +33,25 @@ public checkoutForm;
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.role = params.get('role');
+      switch(this.role) { 
+        case "broker": { 
+           this.title="Broker/Dispatcher";
+           break; 
+        } 
+        case "owner": { 
+           this.title="Owner/Operator";
+           break; 
+        } 
+        case "trucker"
+        : { 
+           this.title="Trucker/Driver" ;
+           break; 
+        } 
+        default: { 
+          console.log("Invalid choice"); 
+          break;              
+       } 
+     } 
       
     });
   }
