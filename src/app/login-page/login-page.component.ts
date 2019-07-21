@@ -6,26 +6,22 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import {  Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+  //test objects
   items: Observable<any[]>;
 //object to check data exit
   itemRef: AngularFireObject<any>;
 
-  public broker="broker";
-  public owner="owner";
-  public trucker="trucker";
-
-
   constructor(public db: AngularFireDatabase,
     private router: Router,
     public afAuth:AngularFireAuth) {
-    this.items = db.list('items').valueChanges();
+      //test data
+      this.items = db.list('items').valueChanges();
    }
 
    login() {

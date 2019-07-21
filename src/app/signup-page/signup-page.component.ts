@@ -48,13 +48,10 @@ public checkoutForm;
      }
 
      onSubmit(customerData) {
-      // Process checkout data here
+      // Process user data here
       
-      console.warn('Your order has been submitted', customerData.CompanyName);
-
-
-
-
+      console.warn('Your info has been submitted', customerData.CompanyName);
+//authenticate check
 if(this.afAuth.user){
   let path=`${this.role}/${this.afAuth.auth.currentUser.uid}`;
 
