@@ -1,25 +1,27 @@
 
 
-<div *ngIf="info.CompanyAddress">
-    <p>{{info.CompanyAddress}}</p>
+<div class="Center" *ngIf="info.CompanyName">
+    <p>{{info.CompanyName}}</p>
     </div>
     
-    <div *ngIf="info.CompanyAddress">
-        <p>{{info.CompanyAddress}}</p>
+    <div class="Center" *ngIf="info.DispatcherName">
+        <p>{{info.DispatcherName}}</p>
         </div>
         
-            <div *ngIf="info.CompanyAddress">
-            <p>{{info.CompanyAddress}}</p>
+            <div class="Center" *ngIf="info.CompanyPhone">
+            <p>{{info.CompanyPhone}}</p>
             </div>
             
-                <div *ngIf="info.CompanyAddress">
-                <p>{{info.CompanyAddress}}</p>
+                <div class="Center" *ngIf="info.CompanyEmail">
+                <p>{{info.CompanyEmail}}</p>
                 </div>
                 
-                <div *ngIf="info.CompanyAddress">
+                <div class="Center" *ngIf="info.CompanyAddress">
                 <p>{{info.CompanyAddress}}</p>
                 </div>
 
+                <div class="Center">
 <a [routerLink]="['/signup',role]" >
     <button type="button" class="btn btn-primary btn-lg">Update</button>
    </a>
+</div>
