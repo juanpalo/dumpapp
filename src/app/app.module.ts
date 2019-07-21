@@ -16,6 +16,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SignaturepadComponent } from './signaturepad/signaturepad.component';
 
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAy4Vx5HGQ82x8hCiBuPhAtxQphCq8KJDU",
@@ -33,7 +34,8 @@ const firebaseConfig = {
     PdfComponent,
     TopBarComponent,
     LoginPageComponent,
-    SignaturepadComponent
+    SignaturepadComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ const firebaseConfig = {
       { path: '', component: LoginPageComponent },
       {path: 'pdf', component: PdfComponent},
       {path:'signature',component:SignaturepadComponent},
+      {path:'signup/:role',component:SignupPageComponent},
     ])
   ],
   providers: [],

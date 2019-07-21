@@ -8,20 +8,39 @@
         </li>
       </ul>
     -->
+<div class="Center">Signing Up As:</div>
 
         <dl >
-            <dt class="Center"> <button >Broker/Dispatcher</button></dt>
+            <dt class="Center">
+                <a [routerLink]="['/signup','broker']" >
+                 <button type="button" class="btn btn-primary btn-lg">Broker/Dispatcher</button>
+                </a>
+                </dt>
             <dd>  &nbsp;</dd>
-            <dt class="Center"><button>Owner/Operator</button></dt>
-            <dd> &nbsp; </dd>
-             <dt class="Center"><button >Trucker/Driver</button></dt>
-             <dd>  &nbsp;</dd>
+            <dt class="Center">
+                    <a [routerLink]="['/signup','owner']" >
+                <button type="button" class="btn btn-primary btn-lg">Owner/Operator</button>
+            </a>
+            </dt>
+                    
+                <dd> &nbsp; </dd>
+             <dt class="Center">
+                    <a [routerLink]="['/signup','trucker']" >
+                 <button type="button" class="btn btn-primary btn-lg">Trucker/Driver</button>
+                </a>
+                </dt>
+                    
+                 <dd>  &nbsp;</dd>
           </dl>
 
-    </div>
+        </div>
     
-     <ng-template #showLogin2>
+  
+     <ng-template   #showLogin2>
           <!-- <a [routerLink]="['/login']" class="button fancy-button"><i class="material-icons">account_circle</i>Sign In</a> -->
-          <button (click)="login()">Login</button>
+          
+          <dl class="Center">
+          <button  (click)="login()">Login</button>
+        </dl>
         </ng-template>
-    
+   
