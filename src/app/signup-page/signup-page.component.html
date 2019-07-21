@@ -80,7 +80,13 @@
                         <textarea id="Address" type="text" formControlName="Address">
                         </textarea>
                       </div>
-    </div>
+                      <ul>
+                            <li *ngFor="let i of item | async">
+                               {{ i | json }}
+                            </li>
+                          </ul>
+    
+                    </div>
 
         <div class="Center">
         <button class="button " type="submit">Submit</button>
