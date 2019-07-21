@@ -10,21 +10,18 @@ import { Router } from "@angular/router";
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-  public login=false;
+  
   constructor(public afAuth:AngularFireAuth,private router: Router) {
     
    }
 
   logout() {
     this.afAuth.auth.signOut();
-    this.login=false;
+    
   }
 
   ngOnInit() {
-   //this.login=false;
-    //if(this.afAuth.user){
-     // this.login=true;
-   // }
+   
   }
 
 }
