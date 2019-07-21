@@ -14,10 +14,46 @@ export class ProfilePageComponent implements OnInit {
 
 //object to check data exit
 itemRef: AngularFireObject<any>;
-
-  constructor() { }
+public info;
+  constructor(public db: AngularFireDatabase,
+    private router: Router,
+    public afAuth:AngularFireAuth) { }
 
   ngOnInit() {
+
+    this.afAuth.auth.onAuthStateChanged(user=>{
+      if(user){
+        this.itemRef = this.db.object(`trucker/${this.afAuth.auth.currentUser.uid}`);
+        this.itemRef.snapshotChanges().subscribe(action => {
+          if(action.payload.val()==null){
+            console.log('not a trucker');
+          }else{
+            console.log(action.payload.val());
+          }
+        });
+    
+        this.itemRef = this.db.object(`broker/${this.afAuth.auth.currentUser.uid}`);
+        this.itemRef.snapshotChanges().subscribe(action => {
+          if(action.payload.val()==null){
+            console.log('not a broker');
+          }else{
+            console.log(action.payload.val());
+          }
+        });
+    
+        this.itemRef = this.db.object(`owner/${this.afAuth.auth.currentUser.uid}`);
+        this.itemRef.snapshotChanges().subscribe(action => {
+          if(action.payload.val()==null){
+            console.log('not a owner');
+          }else{
+            this.info=action.payload.val();
+            console.log(action.payload.val().CompanyAddress);
+          }
+        });
+    
+      }
+    })
+
   }
 
 }

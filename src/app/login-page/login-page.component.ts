@@ -14,7 +14,7 @@ import {  Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
   //test objects
   items: Observable<any[]>;
-//object to check data exit
+  //object to check data exit
   itemRef: AngularFireObject<any>;
 
   constructor(public db: AngularFireDatabase,
@@ -47,6 +47,8 @@ this.afAuth.auth.onAuthStateChanged(user=>{
   if(user){
     this.itemRef = this.db.object(`trucker/${this.afAuth.auth.currentUser.uid}`);
     this.itemRef.snapshotChanges().subscribe(action => {
+      //console.log(action.type)
+      //console.log(action.key)
       if(action.payload.val()==null){
       }else{
         //go to profile page
