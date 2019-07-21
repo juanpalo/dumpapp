@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute  } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+ 
 
 @Component({
   selector: 'app-signup-page',
@@ -7,12 +9,30 @@ import { ActivatedRoute  } from '@angular/router';
   styleUrls: ['./signup-page.component.css']
 })
 export class SignupPageComponent implements OnInit {
-public product;
-  constructor( private route: ActivatedRoute) { }
+public role;
+public checkoutForm;
+  constructor( private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    ) {
+
+      this.checkoutForm = this.formBuilder.group({
+        name: '',
+        address: ''
+      });
+
+     }
+
+     onSubmit(customerData) {
+      // Process checkout data here
+      console.warn('Your order has been submitted', customerData);
+   
+      this.checkoutForm.reset();
+    }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.product = params.get('role');
+      this.role = params.get('role');
+      
     });
   }
 

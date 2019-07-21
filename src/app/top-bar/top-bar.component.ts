@@ -17,7 +17,7 @@ export class TopBarComponent implements OnInit {
 
   logout() {
     this.afAuth.auth.signOut();
-    
+    this.router.navigate(['']);
   }
 
   ngOnInit() {

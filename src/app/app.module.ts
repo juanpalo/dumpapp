@@ -18,6 +18,8 @@ import { SignaturepadComponent } from './signaturepad/signaturepad.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 const firebaseConfig = {
   apiKey: "AIzaSyAy4Vx5HGQ82x8hCiBuPhAtxQphCq8KJDU",
   authDomain: "truckproject-b9adc.firebaseapp.com",
@@ -39,6 +41,8 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
