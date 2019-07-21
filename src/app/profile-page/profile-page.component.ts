@@ -15,6 +15,7 @@ export class ProfilePageComponent implements OnInit {
 //object to check data exit
 itemRef: AngularFireObject<any>;
 public info;
+public role;
   constructor(public db: AngularFireDatabase,
     private router: Router,
     public afAuth:AngularFireAuth) { }
@@ -28,6 +29,7 @@ public info;
           if(action.payload.val()==null){
             console.log('not a trucker');
           }else{
+            this.role='trucker';
             console.log(action.payload.val());
           }
         });
@@ -37,6 +39,7 @@ public info;
           if(action.payload.val()==null){
             console.log('not a broker');
           }else{
+            this.role='broker';
             console.log(action.payload.val());
           }
         });
@@ -46,6 +49,7 @@ public info;
           if(action.payload.val()==null){
             console.log('not a owner');
           }else{
+            this.role='owner';
             this.info=action.payload.val();
             console.log(action.payload.val().CompanyAddress);
           }

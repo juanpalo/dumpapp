@@ -120,7 +120,6 @@ if(this.afAuth.user){
           break;              
        } 
      } 
-      
     });
 
 if(this.role=="trucker"){
@@ -139,19 +138,10 @@ this.itemRef.snapshotChanges().subscribe(action => {
   }else{
     this.alreadySignUp=true;
     //go to profile page
-    this.router.navigate(['profile']);
+    //this.router.navigate(['profile']);
   }
 });
 
-
-if(this.alreadySignUp){
-  //go to profile page
-  this.router.navigate(['profile']);
-}
-
-
-
   }
-
 
 }
