@@ -20,7 +20,7 @@ export class JobsPageComponent implements OnInit {
   public title;
   public info;
 
-  contractors;
+  contractors:Array<string>=[]; 
   jobs: Observable<any[]>;
 
   itemsRef: AngularFireList<any>;
@@ -31,29 +31,28 @@ export class JobsPageComponent implements OnInit {
     public afAuth:AngularFireAuth,
     private router: Router) { 
 
-      this.itemsRef = db.list(`ownerOrBrokerCreateJobs/${this.companyName}`);
-      this.itemsRef.snapshotChanges(['child_added'])
-      .subscribe(actions => {
-        actions.forEach(action => {
-          console.log(action.type);
-          
-          console.log(action.key);
-          console.log(action.payload.val());
-        });
-      });
+     
     }
 
-
-
 //function collect contractors and it's jobs form a new object array
-
 
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
-      this.companyName = String(params.get('companyName'));
+      this.companyName = params.get('companyName');
     });
 
+    this.itemsRef = this.db.list(`ownerOrBrokerCreateJobs/${this.companyName}`);
+
+    this.itemsRef.snapshotChanges(['child_added'])
+    .subscribe(actions => {
+      actions.forEach(action => {
+        console.log(action.type);
+        this.contractors.push(action.key);
+        console.log(action.key);
+        console.log(action.payload.val());
+      });
+    });
 
   }
 
