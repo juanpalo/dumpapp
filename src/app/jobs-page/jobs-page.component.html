@@ -1,1 +1,6 @@
 <p>{{companyName}} received jobs</p>
+<ul>
+    <li *ngFor="let item of contractors | async">
+       {{ item  }}
+    </li>
+  </ul>

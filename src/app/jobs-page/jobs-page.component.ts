@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute ,Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
-import { AngularFireDatabase,AngularFireObject  } from '@angular/fire/database';
+import { AngularFireDatabase,AngularFireObject,AngularFireList  } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
@@ -20,17 +20,30 @@ export class JobsPageComponent implements OnInit {
   public title;
   public info;
 
- //test objects
- contractors: Observable<any[]>;
+  contractors;
   jobs: Observable<any[]>;
 
-  itemRef: AngularFireObject<any>;
+  itemsRef: AngularFireList<any>;
 
   constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     public db: AngularFireDatabase,
     public afAuth:AngularFireAuth,
-    private router: Router) { }
+    private router: Router) { 
+
+      this.itemsRef = db.list(`ownerOrBrokerCreateJobs/${this.companyName}`);
+      this.itemsRef.snapshotChanges(['child_added'])
+      .subscribe(actions => {
+        actions.forEach(action => {
+          console.log(action.type);
+          
+          console.log(action.key);
+          console.log(action.payload.val());
+        });
+      });
+    }
+
+
 
 //function collect contractors and it's jobs form a new object array
 
