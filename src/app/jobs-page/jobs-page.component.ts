@@ -5,9 +5,13 @@ import { ActivatedRoute ,Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
 import { AngularFireDatabase,AngularFireObject,AngularFireList  } from '@angular/fire/database';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+
+import{JobBlock} from'../job-block';
+import { stringify } from '@angular/compiler/src/util';
+
 @Component({
   selector: 'app-jobs-page',
   templateUrl: './jobs-page.component.html',
@@ -21,7 +25,12 @@ export class JobsPageComponent implements OnInit {
   public info;
 
   contractors:Array<string>=[]; 
-  jobs: Observable<any[]>;
+  contractorJobs;
+  jb:JobBlock=new JobBlock();
+
+construtorsWithJobBlock: Array<JobBlock>=[];
+
+  jobIds: Array<string>=[]; 
 
   itemsRef: AngularFireList<any>;
 
@@ -30,8 +39,7 @@ export class JobsPageComponent implements OnInit {
     public db: AngularFireDatabase,
     public afAuth:AngularFireAuth,
     private router: Router) { 
-
-     
+        
     }
 
 //function collect contractors and it's jobs form a new object array
@@ -47,10 +55,20 @@ export class JobsPageComponent implements OnInit {
     this.itemsRef.snapshotChanges(['child_added'])
     .subscribe(actions => {
       actions.forEach(action => {
+
         console.log(action.type);
-        this.contractors.push(action.key);
+        
+this.jb.contractor=String(action.key);
+this.jb.jobList=action.payload.val();
+this.construtorsWithJobBlock.push(this.jb);
+
+        //this.contractors.push(action.key);
         console.log(action.key);
         console.log(action.payload.val());
+
+        //this.contractorJobs=action.payload.val();
+         
+
       });
     });
 
