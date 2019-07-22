@@ -28,7 +28,7 @@ export class JobsPageComponent implements OnInit {
   contractorJobs;
   jb:JobBlock=new JobBlock();
 
-contractorsWithJobBlock: Array<JobBlock>=[];
+  contractorsWithJobBlock: Array<JobBlock>=[];
 
   jobIds: Array<string>=[]; 
 
@@ -55,22 +55,18 @@ contractorsWithJobBlock: Array<JobBlock>=[];
     this.itemsRef.snapshotChanges(['child_added'])
     .subscribe(actions => {
       actions.forEach(action => {
-
         //console.log(action.type);
         
-this.jb.contractor=String(action.key);
-this.jb.jobList=action.payload.val();
-this.contractorsWithJobBlock.push(this.jb);
+      this.jb.contractor=String(action.key);
+      this.jb.jobList=action.payload.val();
+      this.contractorsWithJobBlock.push(this.jb);
 
         //this.contractors.push(action.key);
         console.log(action.key);
         console.log(action.payload.val());
 
-        
-
         //this.contractorJobs=action.payload.val();
          
-
       });
     });
 
