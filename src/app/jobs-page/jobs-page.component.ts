@@ -32,6 +32,9 @@ export class JobsPageComponent implements OnInit {
     public afAuth:AngularFireAuth,
     private router: Router) { }
 
+//function collect contractors and it's jobs form a new object array
+
+
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
