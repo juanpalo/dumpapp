@@ -28,7 +28,7 @@ export class JobsPageComponent implements OnInit {
   contractorJobs;
   jb:JobBlock=new JobBlock();
 
-construtorsWithJobBlock: Array<JobBlock>=[];
+contractorsWithJobBlock: Array<JobBlock>=[];
 
   jobIds: Array<string>=[]; 
 
@@ -56,15 +56,17 @@ construtorsWithJobBlock: Array<JobBlock>=[];
     .subscribe(actions => {
       actions.forEach(action => {
 
-        console.log(action.type);
+        //console.log(action.type);
         
 this.jb.contractor=String(action.key);
 this.jb.jobList=action.payload.val();
-this.construtorsWithJobBlock.push(this.jb);
+this.contractorsWithJobBlock.push(this.jb);
 
         //this.contractors.push(action.key);
         console.log(action.key);
         console.log(action.payload.val());
+
+        
 
         //this.contractorJobs=action.payload.val();
          
