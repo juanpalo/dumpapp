@@ -16,9 +16,13 @@ import { auth } from 'firebase/app';
 export class JobsPageComponent implements OnInit {
 
   public JobForm;
-  public role;
+  public companyName;
   public title;
   public info;
+
+ //test objects
+ contractors: Observable<any[]>;
+  jobs: Observable<any[]>;
 
   itemRef: AngularFireObject<any>;
 
@@ -31,28 +35,7 @@ export class JobsPageComponent implements OnInit {
   ngOnInit() {
 
     this.route.paramMap.subscribe(params => {
-      this.role = params.get('role');
-      switch(this.role) { 
-        case "broker": { 
-          this.role='broker';
-           this.title="Broker/Dispatcher";
-           break; 
-        } 
-        case "owner": { 
-          this.role='owner';
-           this.title="Owner/Operator";
-           break; 
-        } 
-        case "trucker"
-        : { 
-           this.title="Trucker/Driver" ;
-           break; 
-        } 
-        default: { 
-          console.log("Invalid choice"); 
-          break;              
-       } 
-     } 
+      this.companyName = String(params.get('companyName'));
     });
 
 
