@@ -17,6 +17,7 @@ export class CreatJobComponent implements OnInit {
   public role;
   public title;
   public info;
+  public jobList;
 
   itemRef: AngularFireObject<any>;
 
@@ -30,11 +31,11 @@ export class CreatJobComponent implements OnInit {
         Foreman: '',
         Phone: '',
         Email:'',
-        JobID:'',
+        JobIDs:'',
         JobDate:'',
         ArriveAt:'',
         LoadAt:'',
-        Times:'',
+        
       });
      }
 
@@ -42,35 +43,61 @@ export class CreatJobComponent implements OnInit {
       //authenticate check
       if(this.afAuth.user){
 
-      let path=`ownerOrBrokerCreateJobs/${this.info.CompanyName}/${customerData.Contractor}/${customerData.JobID}`;
+      //let path=`ownerOrBrokerCreateJobs/${this.info.CompanyName}/${customerData.Contractor}/${customerData.JobID}`;
 
        if(customerData.Contractor!=""
        &&customerData.Foreman!=""
        &&customerData.Phone!=""
        &&customerData.Email!=""
-       &&customerData.JobID!=""
+       &&customerData.JobIDs!=""
        &&customerData.JobDate!=""
        &&customerData.ArriveAt!=""
        &&customerData.LoadAt!=""
-       &&customerData.Times!=""
        ){
-        let data={
+
+//loop through all the jobs store in database
+let jobString=(String)(customerData.JobIDs);
+this.jobList=jobString.split(","); 
+let jobSize=this.jobList.length;
+
+for(let i=0;i<jobSize;i++){
+
+  let path=`ownerOrBrokerCreateJobs/${this.info.CompanyName}/${customerData.Contractor}/${this.jobList[i]}`;
+
+//at last job insert redirector to profile
+  if(i==jobSize-1){
+
+    let data={
       Contractor:customerData.Contractor,
       Foreman:customerData.Foreman,
       Phone:customerData.Phone,
       Email:customerData.Email,
-      JobID:customerData.JobID,
+      JobID:this.jobList[i],
       JobDate:customerData.JobDate,
       ArriveAt:customerData.ArriveAt,
       LoadAt:customerData.LoadAt,
-      Times:customerData.Times    
-
     }
     this.db.object(path).update(data)
     .catch(error=>console.log(error))
     .then(any=>this.router.navigate(['profile']));
     this.JobForm.reset();
 
+  }else{
+
+  let data={
+    Contractor:customerData.Contractor,
+    Foreman:customerData.Foreman,
+    Phone:customerData.Phone,
+    Email:customerData.Email,
+    JobID:this.jobList[i],
+    JobDate:customerData.JobDate,
+    ArriveAt:customerData.ArriveAt,
+    LoadAt:customerData.LoadAt,
+  }
+  this.db.object(path).update(data)
+  .catch(error=>console.log(error));
+        }
+      }
      }
     }
   }
