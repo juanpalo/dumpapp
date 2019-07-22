@@ -64,7 +64,7 @@ export class JobsPageComponent implements OnInit {
       var userStr=JSON.stringify(this.jb.jobList);
 
       JSON.parse(userStr, (key, value) => {
-        let regexpNumber = new RegExp('');
+        let regexpNumber = new RegExp('^[0-9]');
 
         if(regexpNumber.test(key)){
           console.log(key);
