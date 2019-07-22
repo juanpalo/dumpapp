@@ -149,6 +149,18 @@ this.itemRef.snapshotChanges().subscribe(action => {
     this.info=action.payload.val();
     //go to profile page
     //this.router.navigate(['profile']);
+    this.checkoutForm.get('DriverName').setValue(this.info.DriverName);
+    this.checkoutForm.get('Employer').setValue(this.info.Employer);
+    this.checkoutForm.get('Phone').setValue(this.info.Phone);
+    this.checkoutForm.get('Email').setValue(this.info.Email);
+    this.checkoutForm.get('Address').setValue(this.info.Address);
+
+    this.checkoutForm.get('CompanyName').setValue(this.info.CompanyName);
+    this.checkoutForm.get('DispatcherName').setValue(this.info.DispatcherName);
+    this.checkoutForm.get('CompanyPhone').setValue(this.info.CompanyPhone);
+    this.checkoutForm.get('CompanyEmail').setValue(this.info.CompanyEmail);
+    this.checkoutForm.get('CompanyAddress').setValue(this.info.CompanyAddress);
+    
   }
 });
 
