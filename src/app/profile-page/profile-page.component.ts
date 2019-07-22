@@ -16,6 +16,7 @@ export class ProfilePageComponent implements OnInit {
 itemRef: AngularFireObject<any>;
 public info;
 public role;
+public company;
 
   constructor(public db: AngularFireDatabase,
     private router: Router,
@@ -35,7 +36,8 @@ public role;
           }else{
             this.role='trucker';
             this.info=action.payload.val();
-            console.log(action.payload.val());
+            this.company=String(this.info.Employer);
+            console.log(this.company);
           }
         });
     
@@ -46,6 +48,7 @@ public role;
           }else{
             this.role='broker';
             this.info=action.payload.val();
+            this.company=String(this.info.CompanyName);
             console.log(action.payload.val());
           }
         });
@@ -57,6 +60,7 @@ public role;
           }else{
             this.role='owner';
             this.info=action.payload.val();
+            this.company=String(this.info.CompanyName);
             console.log(action.payload.val().CompanyAddress);
           }
         });

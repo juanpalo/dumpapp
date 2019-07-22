@@ -62,7 +62,7 @@ const firebaseConfig = {
       {path:'signup/:role',component:SignupPageComponent},
       {path:'profile',component:ProfilePageComponent},
       {path:'createJob/:role',component:CreatJobComponent},
-      {path:'Jobs',component:JobsPageComponent}
+      {path:'Jobs/:companyName',component:JobsPageComponent}
     ])
   ],
   providers: [],
