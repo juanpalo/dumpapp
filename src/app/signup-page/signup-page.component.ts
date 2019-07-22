@@ -26,6 +26,7 @@ public checkoutForm;
 
 public info;
 
+
   constructor( private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     public db: AngularFireDatabase,
@@ -140,9 +141,11 @@ this.itemRef.snapshotChanges().subscribe(action => {
   console.log(action.key)
   console.log(action.payload.val())
   if(action.payload.val()==null){
+   
     //this.alreadySignUp=false;
   }else{
     //this.alreadySignUp=true;
+    
     this.info=action.payload.val();
     //go to profile page
     //this.router.navigate(['profile']);

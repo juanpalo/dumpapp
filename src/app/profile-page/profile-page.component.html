@@ -3,28 +3,65 @@
 
 <div>  &nbsp;</div>
 
-<div class="Center" *ngIf="info.CompanyName">
-    <p>CompanyName: {{info.CompanyName}}</p>
+<div class="Center" *ngIf="info.DriverName">
+    <p>DriverName: {{info.DriverName}}</p>
     </div>
     
-    <div class="Center" *ngIf="info.DispatcherName">
-        <p>DispatcherName: {{info.DispatcherName}}</p>
+    <div class="Center" *ngIf="info.Employer">
+        <p>Employer: {{info.Employer}}</p>
         </div>
         
-            <div class="Center" *ngIf="info.CompanyPhone">
-            <p>CompanyPhone: {{info.CompanyPhone}}</p>
+            <div class="Center" *ngIf="info.Phone">
+            <p>Phone: {{info.Phone}}</p>
             </div>
             
-                <div class="Center" *ngIf="info.CompanyEmail">
-                <p>CompanyEmail: {{info.CompanyEmail}}</p>
+                <div class="Center" *ngIf="info.Email">
+                <p>Email: {{info.Email}}</p>
                 </div>
                 
-                <div class="Center" *ngIf="info.CompanyAddress">
-                <p>CompanyAddress: {{info.CompanyAddress}}</p>
+                <div class="Center" *ngIf="info.Address">
+                <p>Address: {{info.Address}}</p>
                 </div>
 
-                <div class="Center">
-<a [routerLink]="['/signup',role]" >
-    <button type="button" class="btn btn-primary btn-lg">Update</button>
-   </a>
-</div>
+                <div class="Center" *ngIf="info.CompanyName">
+                    <p>CompanyName: {{info.CompanyName}}</p>
+                    </div>
+                    
+                    <div class="Center" *ngIf="info.DispatcherName">
+                        <p>DispatcherName: {{info.DispatcherName}}</p>
+                        </div>
+                        
+                            <div class="Center" *ngIf="info.CompanyPhone">
+                            <p>CompanyPhone: {{info.CompanyPhone}}</p>
+                            </div>
+                            
+                                <div class="Center" *ngIf="info.CompanyEmail">
+                                <p>CompanyEmail: {{info.CompanyEmail}}</p>
+                                </div>
+                                
+                                <div class="Center" *ngIf="info.CompanyAddress">
+                                <p>CompanyAddress: {{info.CompanyAddress}}</p>
+                                </div>
+                
+                
+                                <div>  &nbsp;</div>
+
+
+
+
+
+
+
+        <div class="Center">
+        <a [routerLink]="['/signup',role]" >
+        <button type="button" class="btn btn-primary btn-lg">Update Profile</button>
+        </a>
+        </div>
+
+        <div>  &nbsp;</div>
+
+    <div class="Center"  *ngIf="role=='owner'">
+    <a [routerLink]="['/creatJobs']" >
+        <button type="button" class="btn btn-primary btn-lg">Creat Jobs</button>
+       </a>
+    </div>

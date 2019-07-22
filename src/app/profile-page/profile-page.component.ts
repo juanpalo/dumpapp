@@ -30,6 +30,7 @@ public role;
             console.log('not a trucker');
           }else{
             this.role='trucker';
+            this.info=action.payload.val();
             console.log(action.payload.val());
           }
         });
@@ -40,6 +41,7 @@ public role;
             console.log('not a broker');
           }else{
             this.role='broker';
+            this.info=action.payload.val();
             console.log(action.payload.val());
           }
         });
