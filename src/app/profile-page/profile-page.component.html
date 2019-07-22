@@ -54,8 +54,16 @@
 
         <div>  &nbsp;</div>
 
-    <div class="Center"  *ngIf="role=='owner'">
-    <a [routerLink]="['/creatJob']" >
-        <button type="button" class="btn btn-primary btn-lg">Creat Jobs</button>
+    <div class="Center"  *ngIf="role=='owner'||role=='broker'">
+    <a [routerLink]="['/createJob',role]" >
+        <button type="button" class="btn btn-primary btn-lg">Create Jobs</button>
        </a>
     </div>
+
+    <div>  &nbsp;</div>
+
+    <div class="Center" >
+        <a [routerLink]="['/Jobs']" >
+            <button type="button" class="btn btn-primary btn-lg">Company Received Jobs</button>
+           </a>
+        </div>

@@ -167,9 +167,6 @@ this.itemRef.snapshotChanges().subscribe(action => {
   }
 });
 
-
-
-
   }
 
 }

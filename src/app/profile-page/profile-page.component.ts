@@ -3,7 +3,7 @@ import { AngularFireDatabase,AngularFireObject } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {  Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-page',
@@ -16,12 +16,16 @@ export class ProfilePageComponent implements OnInit {
 itemRef: AngularFireObject<any>;
 public info;
 public role;
+
   constructor(public db: AngularFireDatabase,
     private router: Router,
-    public afAuth:AngularFireAuth) { }
+    public afAuth:AngularFireAuth,
+    private route: ActivatedRoute,
+    ) { }
 
   ngOnInit() {
 
+    //the long logic cause web console error can't find value
     this.afAuth.auth.onAuthStateChanged(user=>{
       if(user){
         this.itemRef = this.db.object(`trucker/${this.afAuth.auth.currentUser.uid}`);
