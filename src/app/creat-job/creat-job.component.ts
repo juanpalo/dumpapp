@@ -42,9 +42,6 @@ export class CreatJobComponent implements OnInit {
      onSubmit(customerData) {
       //authenticate check
       if(this.afAuth.user){
-
-      //let path=`ownerOrBrokerCreateJobs/${this.info.CompanyName}/${customerData.Contractor}/${customerData.JobID}`;
-
        if(customerData.Contractor!=""
        &&customerData.Foreman!=""
        &&customerData.Phone!=""
