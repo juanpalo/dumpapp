@@ -34,6 +34,7 @@ export class JobsPageComponent implements OnInit {
 
   itemsRef: AngularFireList<any>;
 
+  
   constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     public db: AngularFireDatabase,
@@ -63,7 +64,12 @@ export class JobsPageComponent implements OnInit {
       var userStr=JSON.stringify(this.jb.jobList);
 
       JSON.parse(userStr, (key, value) => {
-        console.log(key);
+        let regexpNumber = new RegExp('');
+
+        if(regexpNumber.test(key)){
+          console.log(key);
+        }
+        
       });
 
       //console.log(JSON.stringify(this.jb.jobList));
