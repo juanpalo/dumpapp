@@ -1,9 +1,9 @@
-<p>{{companyName}} received jobs</p>
+<p class="Center">{{companyName}} received jobs</p>
 
     <ul>
         <li *ngFor="let item of contractorsWithJobBlock "> 
             {{item.contractor}}
-            <div>&nbsp;</div>
-       {{ item.jobList|json }}
+            <div>
+            {{item.jobList|json }}</div>
     </li>
   </ul>

@@ -59,7 +59,17 @@ export class JobsPageComponent implements OnInit {
         
       this.jb.contractor=String(action.key);
       this.jb.jobList=action.payload.val();
+
+      var userStr=JSON.stringify(this.jb.jobList);
+
+      JSON.parse(userStr, (key, value) => {
+        console.log(key);
+      });
+
+      //console.log(JSON.stringify(this.jb.jobList));
+        
       this.contractorsWithJobBlock.push(this.jb);
+
 
         //this.contractors.push(action.key);
         console.log(action.key);
