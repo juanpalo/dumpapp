@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreatJobComponent } from './creat-job/creat-job.component';
 import { JobsPageComponent } from './jobs-page/jobs-page.component';
+import { JobConfirmPageComponent } from './job-confirm-page/job-confirm-page.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAy4Vx5HGQ82x8hCiBuPhAtxQphCq8KJDU",
@@ -43,7 +44,8 @@ const firebaseConfig = {
     SignupPageComponent,
     ProfilePageComponent,
     CreatJobComponent,
-    JobsPageComponent
+    JobsPageComponent,
+    JobConfirmPageComponent
   ],
   imports: [
     BrowserModule,
